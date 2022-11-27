@@ -14,12 +14,12 @@ namespace SvnMgrClient.Tests
         [TestMethod()]
         public void AddUserTest()
         {
-            using (var client = new MgrClient("https://39.96.77.143:9209/svn/local20_10/;MgrPort:9205"))
+            using (var client = new MgrClient("127.0.0.1",9205))
             {
                 client.Connect();
               var rlt =   client.AddUser(new CreateUserArgs
                 {
-                    Account = "221127",
+                    Account = "user1",
                     PassWord = "AQEAFCER",
                     PassWordCoded = true
                 });
