@@ -3,3 +3,11 @@
 ################################################################################
 
 /packages
+/SvnServerMnagerApi
+/PassWordDecode
+/SvnMgrApp/bin/Debug
+/SvnMgrApp/obj/Debug
+/SvnMgrClient/bin/Debug
+/SvnMgrClient/obj/Debug
+/SvnMgrClientTests/bin/Debug
+/SvnMgrClientTests/obj/Debug
