@@ -160,8 +160,13 @@ namespace SvnMgrClient
                 throw new ArgumentNullException(nameof(svnArgs) + "." + nameof(svnArgs.RepositoryName));
             }
 
-
-            return Send("ADD", svnArgs, timeOutSecond) == "success";
+            var rlt = Send("ADD", svnArgs, timeOutSecond);
+            var sucessed=rlt== "success";
+            if (!sucessed)
+            {
+                NLog.LogManager.GetCurrentClassLogger().Error($"svn AddUser {svnArgs?.Account}({svnArgs.RepositoryName}) error:{rlt}");
+            }
+            return sucessed;
         }
 
         public bool Close()

@@ -18,18 +18,22 @@ namespace SvnMgrApp.Command
         {
             if (session.Logined)
             {
+                logger?.Info("Execute ADD ", requestInfo?.Body);
                 if (adding(requestInfo.Body))
                 {
                     session.Success(requestInfo);
+                    logger?.Info("Execute ADD Success", requestInfo);
                 }
                 else
                 {
                     session.Error(requestInfo);
+                    logger?.Error("Execute ADD Error", requestInfo);
                 }
             }
             else
             {
                 requestInfo.Send(session);
+                logger?.Error("Execute ADD not login", requestInfo?.Body);
             }
         }
 
@@ -68,7 +72,7 @@ namespace SvnMgrApp.Command
                     var baseDir = SvnHelper2.GetBaseDir();
                     SvnHelper2.AddUser(account, psd, baseDir);
                     existUser = SvnHelper2.GetUser(account);
-                    if (existRepName == account)
+                    if (existUser == account)
                     {
                         logger.Debug("成功创建账号：" + account);
                     }
